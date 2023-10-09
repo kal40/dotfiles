@@ -29,5 +29,20 @@
 # # exec: replace current process with chezmoi
 # exec "$chezmoi" "$@"
 
-curl -fsSL get.chezmoi.io | sudo sh -s -- -b /usr/local/bin
-chezmoi init apply
+#!/usr/bin/env bash
+
+# Exit on error
+set -o errexit
+# Exit on error inside any functions or subshells
+set -o errtrace
+
+# Install chezmoi if not installed
+if ! [ -x "$(command -v chezmoi)" ]; then
+    sudo BINDIR=/usr/local/bin sh -c "$(wget -O- https://git.io/chezmoi)"
+fi
+
+# Create dotfiles directory
+mkdir -p ~/.local/share/chezmoi
+
+# Install dotfiles
+chezmoi apply --force
