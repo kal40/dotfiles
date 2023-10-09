@@ -79,7 +79,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-        zsh-syntax-highlighting
+	zsh-syntax-highlighting
 	zsh-autosuggestions
 	fzf-zsh-plugin
 	fzf-tab
@@ -118,3 +118,9 @@ export SSH_SK_HELPER="/mnt/c/Program Files/OpenSSH/ssh-sk-helper.exe"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+{{- $environment:= env "ENVIRONMENT" -}}
+{{- if eq $environment "devcontainer" }}
+export PROMPT_COMMAND='history -a'
+export HISTFILE=/commandhistory/.zsh_history
+{{- end }}
