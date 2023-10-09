@@ -30,4 +30,4 @@
 # exec "$chezmoi" "$@"
 
 curl -fsSL get.chezmoi.io | sudo sh -s -- -b /usr/local/bin
-chezmoi apply
+chezmoi init apply
