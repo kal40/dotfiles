@@ -122,5 +122,5 @@ export SSH_SK_HELPER="/mnt/c/Program Files/OpenSSH/ssh-sk-helper.exe"
 {{$environment:= env "ENVIRONMENT"}}
 {{if eq $environment "devcontainer"}}
 export PROMPT_COMMAND='history -a'
-export HISTFILE=~/commandhistory/.zsh_history
+export HISTFILE="/commandhistory/.zsh_history"
 {{- end }}
