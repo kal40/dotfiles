@@ -1,8 +1,16 @@
 [credential]
+	{{if contains "WSL" .chezmoi.kernel.osrelease}}
 	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+	{{end}}
 [user]
 	name = kal40
 	email = karoly.lonich@smartcoder.dev
 	signingkey = C356C9ED24DAE30D61F4CC6C2538BD116FBD30EB
 [gpg]
+	{{if contains "WSL" .chezmoi.kernel.osrelease}}
 	program = "/mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe"
+	{{end}}
+
+	{{if contains "termux" .chezmoi.sourceDir}}
+	program = "okc-gpg"
+	{{end}}
