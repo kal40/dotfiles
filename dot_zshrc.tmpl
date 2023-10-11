@@ -123,4 +123,6 @@ export SSH_SK_HELPER="/mnt/c/Program Files/OpenSSH/ssh-sk-helper.exe"
 {{if eq $environment "devcontainer"}}
 export PROMPT_COMMAND='history -a'
 export HISTFILE="/commandhistory/.zsh_history"
-{{- end }}
+{{end}}
+
+eval $(okc-ssh-agent)
