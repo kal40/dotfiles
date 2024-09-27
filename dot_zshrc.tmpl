@@ -125,4 +125,6 @@ export PROMPT_COMMAND='history -a'
 export HISTFILE="/commandhistory/.zsh_history"
 {{end}}
 
+{{if eq .chezmoi.os "linux"}}
 eval $(okc-ssh-agent)
+{{end}}
