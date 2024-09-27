@@ -120,11 +120,11 @@ export SSH_SK_HELPER="/mnt/c/Program Files/OpenSSH/ssh-sk-helper.exe"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 {{$environment:= env "ENVIRONMENT"}}
-{{if eq $environment "devcontainer"}}
+{{- if eq $environment "devcontainer"}}
 export PROMPT_COMMAND='history -a'
 export HISTFILE="/commandhistory/.zsh_history"
 {{end}}
 
-{{if eq .chezmoi.os "linux"}}
+{{- if eq .chezmoi.os "android"}}
 eval $(okc-ssh-agent)
 {{end}}
